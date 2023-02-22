@@ -1,0 +1,107 @@
+.ol-geocoder.gcd-gl-container {
+    top: 135px!important;
+    left: .5em!important;
+    width: 2.1em!important;
+    height: 2.1em!important;
+}
+.ol-geocoder .gcd-gl-container{
+    width: 2.1em!important;
+    height: 2.1em!important;
+}
+.ol-geocoder .gcd-gl-control{
+    width: 2.1em!important;
+}
+.ol-geocoder .gcd-gl-expanded {
+    width: 15.625em!important;
+    height: 2.1875em;
+}
+.ol-touch .ol-geocoder.gcd-gl-container{
+    top: 180px!important;
+}
+.ol-geocoder .gcd-gl-btn {
+    width: 1.375em!important;
+    height: 1.375em!important;
+    top: .225em!important;
+    background-image: none!important;
+}
+.search-layer {
+  top: 170px;
+  left: .5em;
+}
+.ol-touch .search-layer {
+  top: 230px;
+}
+.ol-control button {
+    background-color: #0c7ab5 !important;
+    color: #ffb701 !important;
+    border-radius: 0px !important;
+}
+.ol-zoom, .geolocate, .gcd-gl-control .ol-control {
+    background-color: rgba(255,255,255,.4) !important;
+    padding: 3px !important;
+}
+.ol-scale-line {
+    background: none !important;
+}
+.ol-scale-line-inner {
+    border: 2px solid #0c7ab5 !important;
+    border-top: none !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: black !important;
+}
+.geolocate {
+    top: 65px;
+    left: .5em;
+}
+.ol-touch .geolocate {
+    top: 80px;
+}
+.tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+  }
+  .tooltip-static {
+    background-color: #ffcc33;
+    color: black;
+    border: 1px solid white;
+  }
+  .tooltip-measure:before,
+  .tooltip-static:before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+  }
+  .tooltip-static:before {
+    border-top-color: #ffcc33;
+  }
+  .measure-control {
+    top: 100px;
+    left: .5em;
+  }
+.ol-touch .measure-control {
+    top: 130px;
+  }
+#map {
+    /* width: 900px; */
+    position: absolute;
+    height: 1200px ;
+    flex-grow: inherit;
+    /* left: 0px; */
+    /* transform-origin: left top; */
+    /* transform: matrix(1, 0, 0, 1, 0, 0); */
+    /* border: 1px solid #0c7ab5; */
+}

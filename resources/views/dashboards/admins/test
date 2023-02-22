@@ -1,0 +1,221 @@
+@extends('dashboards.admins.layouts.admin-dash-layout')
+@section('title','Prélèvements')
+@section('content')
+<!-- Modal EDIT -->
+<div class="modal fade" id="EditForm2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Mise A Jours</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" method="POST" action="" id="" style="color:black">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-md btn-primary">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Visible Content -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2 mt-2">
+            <div class="col-sm-5 offset-sm-1">
+              <h1>Liste de Prélèvements</h1>
+            </div>
+            <div class="col-sm-5">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item" ><a href="{{route('admin.dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item active text-danger">Prélèvements</li>
+              </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+    
+        <!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10" style="margin:auto;">
+            <div class="card ">
+                <div class="card-header" style="border-top: 3px solid rgb(201, 53, 69); ">
+                    <div class="row " >
+                        <div class="col-sm-8" style="color:black">    
+                                <h4>Prélèvements</h4>
+                        </div>
+                        <div class="col-sm-4" style="float:right">    
+                        <!-- Button trigger modal -->
+                            <a type="" href="{{ route('AddEprv') }}" class="btn btn-success btn-lg" style="float:right" >Ajouter</a>
+                                            
+                        </div>
+                </div>
+            </div>
+            <!-- <h5 class="card-header" style="background-color:#008080; color: white;"><b>Ouvrages</b></h5> -->
+            <div class="card-body">
+                <table class="table table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Code Ouvrage</th>
+                            <th scope="col">Code Element</th>
+                            <th scope="col">Date Prélèvement</th>
+                            <th scope="col">mode de production</th>
+                            <th scope="col">affaissement du cone</th>
+                            <!-- <th scope="col">provenance granulas</th>
+                            <th scope="col">D Max</th>
+                            <th scope="col">Provenance du Sable</th>
+                            <th scope="col">Provenance du Ciment</th> -->
+                            <th scope="col">Type du Ciment</th>
+                            <th scope="col">E/C</th>
+                            <th scope="col">Opérations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($prelevements as $prelev)
+                            <tr>
+                                <th scope="col">{{$prelev->elem_affaire}}-{{$prelev->elem_site}}</th>
+                                <th scope="col">{{$prelev->elem_nom}}</th>
+                                <th scope="col">{{$prelev->pe_date}}</th>
+                                <th scope="col">{{$prelev->mode_prod}}</th>
+                                <th scope="col">{{$prelev->pe_affais_cone}}</th>
+                                <!--<th scope="col">{{$prelev->pe_gran_prov}}</th>
+                                <th scope="col">{{$prelev->pe_gran_dmax}}</th>
+                                <th scope="col">{{$prelev->pe_sable_prov}}</th>
+                                <th scope="col">{{$prelev->pe_cim_prov}}</th> -->
+                                <th scope="col">{{$prelev->pe_cim_type}}</th>
+                                <th scope="col">{{$prelev->pe_cim_ec}}</th>
+                                <th scope="col">
+                                    <button type="button" value="{{$prelev->pe_id}}" class="btn EditForm" data-toggle="modal" data-target="#EditForm2" > <i class="fas fa-edit" style="color:blue" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='blue'"></i> </button>
+                                    <button type="button" value="{{$prelev->pe_id}}" class="btn EditForm" data-toggle="modal" data-target="#EditForm" > <i class="fas fa-edit" style="color:black" onMouseOver="this.style.color='grey'" onMouseOut="this.style.color='black'"></i> </button>
+                                    <a href="admin/ouvrages/prelevements/delete/{{$prelev->pe_id}}">
+                                        <i class="fas fa-trash-alt" style="color:red" onMouseOver="this.style.color='#900000'" onMouseOut="this.style.color='red'"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+<script>
+    // Get Sites List 
+     
+      $(document).ready(function(){
+        $('#prj').change(function(){
+           var prj = $('#prj').val();
+           console.log(prj)
+           $('#site').html('');
+            $.ajax({
+                url:'admin/getSite/'+prj,
+                type:'GET',
+                data:{},
+                dataType: "json",
+                success:function(data)
+                {
+                    
+                    $.each(data, function(key, sites)
+                    {     
+                    console.log(sites.site_id);
+                    $('#site').prop('disabled', false).append('<option value="'+sites.site_id+'">'+sites.site_code+'</option>');
+                    });
+                }
+            });
+        });
+      });
+
+    // Get ouvrage List
+    $(document).ready(function(){
+        $('#site').change(function(){
+           var site = $('#site').val();
+           console.log(site)
+           $('#ouvrage').html('');
+            $.ajax({
+                url:'admin/getOuvrage/'+site,
+                type:'GET',
+                data:{},
+                dataType: "json",
+                success:function(data)
+                {
+                    $.each(data, function(key, ouvrages)
+                    {  
+                    $('#ouvrage').prop('disabled', false).append('<option value="'+ouvrages.ouv_id+'">'+ouvrages.ouv_code+'</option>');
+                    });
+                }
+            });
+        });
+      });
+
+      // Get Elements List
+    $(document).ready(function(){
+        $('#ouvrage').change(function(){
+           var ouv = $('#ouvrage').val();
+        //    console.log(ouv)
+           $('#elem').html('');
+            $.ajax({
+                url:'admin/getElement/'+ouv,
+                type:'GET', 
+                data:{},
+                dataType: "json",
+                success:function(data)
+                {
+                    $.each(data, function(key, elements)
+                    {  
+                    $('#elem').prop('disabled', false).append('<option value="'+elements.elem_id+'">'+elements.elem_code+'</option>');
+                    });
+                }
+            });
+        });
+      });
+
+    $(document).ready(function () {
+
+        $(document).on('click', '.EditForm' ,function () {
+
+            $('#EditForm').modal('show');
+            var pe_id=$(this) .val();
+            console.log(pe_id);
+            $.ajax({
+                type:"GET",
+                url:"admin/ouvrages/upd_prelevement/"+pe_id,
+                success: function (response) {
+                console.log((response));
+                $('#pe_id').val(response.prelev_ecras.pe_id);
+                $('#pe_date').val(response.prelev_ecras.pe_date);
+                $('#pe_affais_cone').val(response.prelev_ecras.pe_affais_cone);
+                $('#pe_gran_prov').val(response.prelev_ecras.pe_gran_prov);
+                $('#pe_gran_dmax').val(response.prelev_ecras.pe_gran_dmax);
+                $('#pe_sable_prov').val(response.prelev_ecras.pe_sable_prov);
+                $('#pe_cim_type').val(response.prelev_ecras.pe_cim_type);
+                $('#pe_cim_type').val(response.prelev_ecras.pe_cim_type);
+                $('#pe_cim_prov').val(response.prelev_ecras.pe_cim_prov);
+                $('#pe_cim_ec').val(response.prelev_ecras.pe_cim_ec);
+                $('#pe_obs').val(response.prelev_ecras.pe_obs);
+                $('#pe_mode_prod').val(response.prelev_ecras.pe_mode_prod);
+                }
+            }) 
+        });
+    });
+
+
+    </script> 
+@endsection

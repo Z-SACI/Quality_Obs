@@ -1,0 +1,8 @@
+.scale-up-ver-top{animation:scale-up-ver-top .8s cubic-bezier(.39,.575,.565,1.000) both}
+@keyframes scale-up-ver-top{0%{transform:scaleY(.4);transform-origin:100% 0}100%{transform:scaleY(1);transform-origin:100% 0}}
+
+.slide-fwd-center{-webkit-animation:slide-fwd-center .45s cubic-bezier(.25,.46,.45,.94) .2s both;animation:slide-fwd-center .45s cubic-bezier(.25,.46,.45,.94) .2s both}
+@-webkit-keyframes slide-fwd-center{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}}@keyframes slide-fwd-center{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}}
+
+.slide-fwd-center2{animation:slide-fwd-center2 .45s cubic-bezier(.25,.46,.45,.94) .3s both}
+@keyframes slide-fwd-center2{0%{transform:translateZ(0)}100%{transform:translateZ(160px)}}
