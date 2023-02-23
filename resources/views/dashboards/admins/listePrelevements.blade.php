@@ -133,7 +133,7 @@
                 </div>
             <!-- <h5 class="card-header" style="background-color:#008080; color: white;"><b>Ouvrages</b></h5> -->
              <div class="card-body">
-                <table class="table table-striped" id="myTable">
+                <table class="table table-striped" id="">
                     <thead>
                         <tr>
                             <th scope="col">Code Bloc</th>
@@ -167,6 +167,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
+                <div class="card-footer" style="align-items:right;">
+                {{ $prelevements->links() }}
+                </div>
             </div>
         </div>
     </div>

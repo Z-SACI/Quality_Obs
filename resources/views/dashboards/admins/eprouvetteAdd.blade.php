@@ -136,12 +136,12 @@
                                     <br>
                                     <fieldset>
                                         <div class="form-card">
-                                            <div class="form-group row mr-2 ml-2">
+                                            <!-- <div class="form-group row mr-2 ml-2">
                                                 <label for="pe_date" class="col-sm-3 col-form-label">Référence du Prélèvement</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="Introduisez le Code" id="input22">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group row mr-2 ml-2">
                                                 <label for="pe_date" class="col-sm-3 col-form-label">Date de Coulage</label>
                                                 <div class="col-sm-3">
@@ -190,7 +190,7 @@
                                                 </div>
                                                 <label for="inputEmail" class="col-sm-2 col-form-label">Dosage</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_gran_dosage">
+                                                    <input type="number" step=".01" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_gran_dosage" required>
                                                     <span class="text-danger error-text email_error"></span>
                                                 </div>
                                             </div>
@@ -214,7 +214,7 @@
                                             <div class="form-group row mr-2 ml-2">
                                                 <label for="inputEmail" class="col-sm-2 col-form-label">Dosage</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_sable_dosage">
+                                                    <input type="number" step=".01" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_sable_dosage" required>
                                                     <span class="text-danger error-text email_error"></span>
                                                 </div>
                                             </div>
@@ -243,7 +243,7 @@
                                                 </div>
                                                 <label for="inputEmail" class="col-sm-2 col-form-label">Dosage</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_cim_dosage">
+                                                    <input type="number" step=".01" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_cim_dosage" required>
                                                     <span class="text-danger error-text email_error"></span>
                                                 </div>
                                             </div>
@@ -271,7 +271,7 @@
                                                 </div>
                                                 <label for="inputEmail" class="col-sm-2 col-form-label">Dosage</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_adj_dosage">
+                                                    <input type="number" step=".01" class="form-control" placeholder="Introduisez l'élément de l'ouvrage" value="" name="pe_adj_dosage" required>
                                                 </div>
                                             </div>
                                         </div>

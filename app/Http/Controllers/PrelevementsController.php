@@ -86,9 +86,9 @@ class PrelevementsController extends Controller
             $join->on('elem_ouvrages.elem_bloc','=','ouvrages.code_bloc');} )
         ->join('mode_prods','prelev_ecras.pe_mode_prod','=','mode_prods.mode_id')
         ->where('pe_entrp_ctc','=','0')
-        ->limit(3000)
         ->orderby('pe_id', 'desc')
-        ->get(['prelev_ecras.*','elem_ouvrages.*','mode_prods.*','ouvrages.*']);
+        // ->get(['prelev_ecras.*','elem_ouvrages.*','mode_prods.*','ouvrages.*']);
+        ->paginate(10);
         return view('dashboards.admins.listePrelevements', compact('prelevements'));
     }
 
@@ -101,9 +101,10 @@ class PrelevementsController extends Controller
             $join->on('elem_ouvrages.elem_bloc','=','ouvrages.code_bloc');} )
         ->join('mode_prods','prelev_ecras.pe_mode_prod','=','mode_prods.mode_id')
         ->where('pe_entrp_ctc','=','1')
-        ->limit(3000)
+        // ->limit(3000)
         ->orderby('pe_id', 'desc')
-        ->get(['prelev_ecras.*','elem_ouvrages.*','mode_prods.*','ouvrages.*']);
+        // ->get(['prelev_ecras.*','elem_ouvrages.*','mode_prods.*','ouvrages.*']);
+        ->paginate(10);
         return view('dashboards.admins.listePrelevements', compact('prelevements'));
     }
     function prelevement_get($pe_id){

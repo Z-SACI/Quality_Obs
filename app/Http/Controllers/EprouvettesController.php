@@ -108,7 +108,7 @@ class EprouvettesController extends Controller
     {
         $eprouvettes = eprouvettes::join('type_eprouvettes', 'eprouvettes.epr_type', '=', 'type_eprouvettes.eprv_id')
             ->join('prelev_ecras', 'eprouvettes.epr_prelev', '=', 'prelev_ecras.pe_id')
-            ->orderby('eprouvettes.updated_at', 'desc')
+            ->orderby('eprouvettes.epr_id', 'desc')
             // ->limit(1000)
             ->paginate(10);
             // ->get(['eprouvettes.*','prelev_ecras.*','type_eprouvettes.*']);

@@ -73,7 +73,7 @@ $(".add_eprv").on('change', function() {
   </div>\
   <label for="elem_ouvrage" class="col-sm-2 col-form-label">Date d\'Ecrasement</label>\
   <div class="col-sm-4">\
-      <input type="date" class="form-control"  placeholder="Introduisez le Code" name="epr_date_ecras[]" value="NULL">\
+      <input type="date" class="form-control"  placeholder="Introduisez le Code" name="epr_date_ecras[]" value="0000-00-00">\
   </div>\
 </div>\
 <div class="form-group row mr-2 ml-2 " >\
@@ -82,14 +82,14 @@ $(".add_eprv").on('change', function() {
       <select name="epr_type[]" class="form-control test" id="">\
         @include("types_template")\
           @foreach($types as $typ)\
-              <option value="1" selected>Cubique</option>\
+              <option value="1" Selected>Cubique</option>\
               <option value="2">Cylindrique</option>\
           @endforeach\
       </select>\
   </div>\
   <label for="elem_ouvrage" class="col-sm-2 col-form-label">Contrainte FCI</label>\
   <div class="col-sm-4">\
-      <input type="text" class="form-control"  placeholder="Introduisez le Code" name="epr_fci[]" value="NULL">\
+      <input type="number" steps=".1" class="form-control"  placeholder="Introduisez le Code" name="epr_fci[]" value="NULL">\
   </div>\
 </div><hr>';  }
    $('.eprv').empty().append(html);
